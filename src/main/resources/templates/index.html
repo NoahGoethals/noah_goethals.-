@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evenementen</title>
+</head>
+<body>
+<h1>Laatste evenementen</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Titel</th>
+        <th>Organisatie</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.title}">Titel</td>
+        <td th:text="${event.organization}">Organisatie</td>
+        <td><a th:href="@{'/details/' + ${event.id}}">Bekijk</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/new"><button>Nieuw evenement toevoegen</button></a>
+</body>
+</html>
