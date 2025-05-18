@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Details van evenement</h1>
+<div th:replace="fragments :: menu"></div>
 
 <p><strong>Titel:</strong> <span th:text="${event.title}"></span></p>
 <p><strong>Beschrijving:</strong> <span th:text="${event.description}"></span></p>
@@ -13,11 +14,21 @@
 <p><strong>Organisatie:</strong> <span th:text="${event.organization}"></span></p>
 <p><strong>Contact e-mail:</strong> <span th:text="${event.contactEmail}"></span></p>
 
-<p><strong>Locatie:</strong> <span th:text="${event.location.name}"></span></p>
-<p><strong>Adres:</strong> <span th:text="${event.location.address}"></span></p>
-<p><strong>Capaciteit:</strong> <span th:text="${event.location.capacity}"></span></p>
+<div th:if="${event.location != null}">
+  <p><strong>Locatie:</strong> <span th:text="${event.location.name}"></span></p>
+  <p><strong>Adres:</strong> <span th:text="${event.location.address}"></span></p>
+  <p><strong>Capaciteit:</strong> <span th:text="${event.location.capacity}"></span></p>
+</div>
+
+<div th:if="${event.location == null}">
+  <p><em>Geen locatie gekoppeld aan dit evenement.</em></p>
+</div>
 
 <br>
 <a href="/"><button>Terug naar overzicht</button></a>
+
+<div th:replace="fragments :: footer"></div>
+</body>
+
 </body>
 </html>

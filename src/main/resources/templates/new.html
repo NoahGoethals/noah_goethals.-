@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nieuw Evenement</title>
+</head>
+<body>
+<div th:replace="fragments :: menu"></div>
+
+<h1>Nieuw Evenement Toevoegen</h1>
+
+<form th:action="@{/new}" th:object="${event}" method="post">
+  <p>
+    Titel: <input type="text" th:field="*{title}" />
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+  </p>
+
+  <p>
+    Beschrijving: <textarea th:field="*{description}"></textarea>
+  </p>
+
+  <p>
+    Datum en tijd: <input type="datetime-local" th:field="*{datetime}" />
+  </p>
+
+  <p>
+    Organisatie: <input type="text" th:field="*{organization}" />
+    <span th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}"></span>
+  </p>
+
+  <p>
+    Contact e-mail: <input type="email" th:field="*{contactEmail}" />
+    <span th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}"></span>
+  </p>
+
+  <p>
+    Locatie:
+    <select th:field="*{location}">
+      <option th:each="loc : ${locations}" th:value="${loc.id}" th:text="${loc.name}">Locatie</option>
+    </select>
+  </p>
+
+  <button type="submit">Toevoegen</button>
+</form>
+
+<br>
+<a href="/"><button>Annuleren</button></a>
+
+<div th:replace="fragments :: footer"></div>
+</body>
+
+</body>
+</html>
