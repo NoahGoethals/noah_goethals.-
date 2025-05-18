@@ -17,6 +17,7 @@ public class Event {
     @NotBlank(message = "Titel is verplicht.")
     private String title;
 
+    @NotBlank(message = "Beschrijving is verplicht.")
     private String description;
 
     @NotNull(message = "Datum en tijd zijn verplicht.")
@@ -35,7 +36,8 @@ public class Event {
     private Location location;
 
     // Constructors
-    public Event() {}
+    public Event() {
+    }
 
     public Event(String title, String description, LocalDateTime datetime, String organization, String contactEmail, Location location) {
         this.title = title;

@@ -16,12 +16,17 @@
   </p>
 
   <p>
-    Beschrijving: <textarea th:field="*{description}"></textarea>
+    Beschrijving:
+    <textarea th:field="*{description}"></textarea>
+    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
   </p>
 
   <p>
-    Datum en tijd: <input type="datetime-local" th:field="*{datetime}" />
+    Datum en tijd:
+    <input type="datetime-local" th:field="*{datetime}" />
+    <span th:if="${#fields.hasErrors('datetime')}" th:errors="*{datetime}"></span>
   </p>
+
 
   <p>
     Organisatie: <input type="text" th:field="*{organization}" />
